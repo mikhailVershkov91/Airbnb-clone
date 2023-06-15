@@ -10,6 +10,7 @@ import { signOut, useSession } from "next-auth/react";
 
 export const UserMenu = () => {
 	const session = useSession();
+	console.log("session: ", session);
 
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
@@ -35,7 +36,7 @@ export const UserMenu = () => {
 				>
 					<AiOutlineMenu />
 					<div className="hidden md:block">
-						<Avatar />
+						<Avatar src={session.data?.user?.image} />
 					</div>
 				</div>
 			</div>
