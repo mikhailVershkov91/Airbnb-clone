@@ -19,7 +19,7 @@ export interface MapProps {
 	center?: number[];
 }
 
-export const Map: React.FC<MapProps> = ({ center }) => {
+const Map: React.FC<MapProps> = ({ center }) => {
 	return (
 		<MapContainer
 			center={(center as L.LatLngExpression) || [42.341686, 69.590103]}
@@ -32,3 +32,5 @@ export const Map: React.FC<MapProps> = ({ center }) => {
 		</MapContainer>
 	);
 };
+
+export default Map;
