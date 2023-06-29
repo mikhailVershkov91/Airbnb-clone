@@ -21,6 +21,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
 			</AuthProvider>
 		);
 	}
+	
 	return (
 		<AuthProvider>
 			<ListingClient
