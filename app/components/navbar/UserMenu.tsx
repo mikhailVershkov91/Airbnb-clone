@@ -8,10 +8,11 @@ import { useRegisterModal } from "@/app/hooks/useRegisterModal";
 import { useLoginModal } from "@/app/hooks/useLoginModal";
 import { signOut, useSession } from "next-auth/react";
 import { useRentModal } from "@/app/hooks/useRentModal";
+import { useRouter } from "next/navigation";
 
 export const UserMenu = () => {
 	const session = useSession();
-	console.log("session: ", session);
+	const router = useRouter();
 
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
@@ -55,7 +56,10 @@ export const UserMenu = () => {
 					<div className="flex flex-col cursor-pointer">
 						{session.data ? (
 							<>
-								<MenuItem onClick={() => {}} label="My trips" />
+								<MenuItem
+									onClick={() => router.push("/trips")}
+									label="My trips"
+								/>
 								<MenuItem onClick={() => {}} label="My favorites" />
 								<MenuItem onClick={() => {}} label="My reservations" />
 								<MenuItem onClick={() => {}} label="My properties" />
