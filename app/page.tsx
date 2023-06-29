@@ -1,13 +1,16 @@
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings from "./actions/getListings";
+import getListings, { IListingsParams } from "./actions/getListings";
 import { Container } from "./components/Container";
 import { EmptyState } from "./components/EmptyState";
 import { ListingCard } from "./components/listings/ListingCard";
 import AuthProvider from "./providers/AuthProvider";
-import { SafeListing } from "./types";
 
-export default async function Home() {
-	const listings = await getListings();
+interface Props {
+	searchParams: IListingsParams;
+}
+
+const Home: React.FC<Props> = async ({ searchParams }) => {
+	const listings = await getListings(searchParams);
 	const currentUser = await getCurrentUser();
 
 	if (!listings?.length) {
@@ -33,4 +36,6 @@ export default async function Home() {
 			</Container>
 		</AuthProvider>
 	);
-}
+};
+
+export default Home;
