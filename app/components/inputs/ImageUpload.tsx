@@ -15,9 +15,13 @@ interface Props {
 }
 
 export const ImageUpload: React.FC<Props> = ({ value, onChange }) => {
-	const handleUpload = useCallback((result: any) => {
-		onChange(result.info.secure_url);
-	}, []);
+	const handleUpload = useCallback(
+		(result: any) => {
+			onChange(result.info.secure_url);
+		},
+		// eslint-disable-next-line
+		[]
+	);
 
 	return (
 		<CldUploadWidget
